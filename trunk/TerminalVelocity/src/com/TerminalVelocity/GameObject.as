@@ -10,5 +10,10 @@ package com.TerminalVelocity
 			super(_x, _y);
 		}
 		
+		public function die():void
+		{
+			visible = false;
+			exists = false;
+		}
 	}
 }

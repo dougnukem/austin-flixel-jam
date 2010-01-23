@@ -13,8 +13,6 @@
 		{
 			super(480, 640, FallState, 1);
 			super.showLogo = false;
-			//super.setLogoFX(0xFFFF0000);
-			
 			
 		}
 		

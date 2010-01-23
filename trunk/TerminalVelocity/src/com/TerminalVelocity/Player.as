@@ -28,6 +28,10 @@
 		{
 			handleInput();
 			super.update();
+			
+			//Death Check
+			if (velocity.y == 6000)
+				die();
 		}
 		
 		private function handleInput():void
@@ -47,7 +51,6 @@
 			}
 		}
 		
-
 		//override public function collideY(core:FlxCore):Boolean
 		//{
 			//var isHit:Boolean = super.collideY(core);
@@ -60,7 +63,7 @@
 
 		public function die():void
 		{
-			FlxG.log("TODO: DIE HORRIBLY!");
+			FlxG.switchState(DeathState);
 		}
 		
 		public function bounce():void
