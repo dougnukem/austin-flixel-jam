@@ -2,7 +2,7 @@ package com.TerminalVelocity
 {
 	public class LevelChunk
 	{
-		public static const STANDARD_LEVEL_CHUNK_HEIGHT:Number = 600;
+		public static const STANDARD_LEVEL_CHUNK_HEIGHT:Number = 200;
 		
 		public function LevelChunk()
 		{

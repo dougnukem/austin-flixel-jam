@@ -11,6 +11,7 @@ package  com.TerminalVelocity
 		
 		protected var levelObjects:Array;
 		protected var availableLevelChunks:Array;
+		protected var levelHeight:int;
 		
 		public function LevelGenerator(_height:int)
 		{
@@ -22,12 +23,13 @@ package  com.TerminalVelocity
 			
 			globalGenerator = this;
 			
+			levelHeight = _height;
+			
 			
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
 			//	do it by modifying this array!!! Simply put the name of your class (e.g. LevelChunk_Shay_001)
 			//	in the array and it will be used!
-			//availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002 ];
-			availableLevelChunks = [ LevelChunk_Shay_001 ];
+			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002 ];
 			
 			
 			
@@ -46,6 +48,8 @@ package  com.TerminalVelocity
 			// HACK: Just get each of the available chunks in order and stick their objects into the objects array.
 			var runningHeight:Number = 0;
 			
+			
+			/*
 			for ( var i:uint = 0; i < availableLevelChunks.length; i++ )
 			{
 				var chunkClass:Class = availableLevelChunks[i];
@@ -55,6 +59,31 @@ package  com.TerminalVelocity
 				
 				runningHeight += chunk.getHeight();
 			}
+			
+			*/
+			
+			// We'll use this associative array to track how many times we've used each level chunk.
+			var numChunksAdded:int = 0;
+			
+			while ( runningHeight < levelHeight )
+			{
+				// Scramble the array if we're at the start (or have come back around to the start).
+				if ( ( numChunksAdded % availableLevelChunks.length ) == 0 )
+				{
+					scrambleArray(availableLevelChunks);
+				}
+				
+				// Append a chunk...!
+				var chunkClass:Class = availableLevelChunks[numChunksAdded];
+				var chunk:LevelChunk = new chunkClass();
+				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
+				
+				// Iterate things!
+				numChunksAdded = ( ( numChunksAdded + 1 ) % availableLevelChunks.length );
+				runningHeight += chunk.getHeight();
+				
+			}
+			
 			
 			// Always append the ground at the bottom!
 			appendChunkObjectsToArrayAtOffset( levelObjects, new LevelChunk_FLOOR(), runningHeight );
@@ -84,6 +113,19 @@ package  com.TerminalVelocity
 				aryToAppendTo.push( obj );
 			}
 			
+		}
+		
+		protected static function scrambleArray(_ary:Array):void
+		{
+			
+			for ( var i:uint = 0; i < _ary.length; i++)
+			{
+			  var tmp:* =_ary[i];
+			  var randomNum:int = Math.random() * (_ary.length);
+			  _ary[i]=_ary[randomNum];
+			  _ary[randomNum]=tmp;
+		   }
+
 		}
 		
 	}
