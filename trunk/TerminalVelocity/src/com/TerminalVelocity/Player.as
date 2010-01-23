@@ -1,7 +1,7 @@
 ﻿package com.TerminalVelocity 
 {
 	import flash.geom.Point;
-	import org.flixel.FlxSprite;
+	import org.flixel.*;
 	import org.flixel.FlxG;
 	
 	/**
@@ -48,6 +48,32 @@
 				this.velocity.x = 0;
 			}
 		}
+		
+		override public function collideY(core:FlxCore):Boolean
+		{
+			var isHit:Boolean = super.collideY(core);
+			FlxG.log("player collide: " );
+			if(isHit)
+				bounce();	
+			
+			return isHit;
+		}
+		
+		public function bounce():void
+		{
+			velocity.y = -100;
+			//FlxG.play(SndJump);
+			flicker();
+		}
+		
+		override public function hurt(Damage:Number):void
+		{
+			super.hurt(Damage);
+			
+			flicker();
+		}
+		
+		
 	}
 
 }
