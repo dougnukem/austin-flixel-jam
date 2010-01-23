@@ -1,6 +1,6 @@
 ﻿package com.TerminalVelocity
 {
-	import org.flixel.FlxState;
+	import org.flixel.*;
 	
 	/**
 	 * ...
@@ -17,6 +17,9 @@
 		{
 			initPlayer();
 			initObstacles();
+			//Camera follow the player
+			//FlxG.follow(player);
+			//FlxG.followAdjust(0,0.5);
 		}
 		
 		private function initPlayer():void
