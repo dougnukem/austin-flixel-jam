@@ -20,8 +20,7 @@ package  com.TerminalVelocity
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
 			//	do it by modifying this array!!! Simply put the name of your class (e.g. LevelChunk_Shay_001)
 			//	in the array and it will be used!
-			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004 ];
-			
+			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004, LevelChunk_Shay_005, LevelChunk_Shay_006 ];
 			
 			
 			levelObjects = new Array();

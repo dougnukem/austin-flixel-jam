@@ -2,7 +2,7 @@ package com.TerminalVelocity.levelChunks
 {
 	import com.TerminalVelocity.*;
 	
-	public class LevelChunk_Shay_004
+	public class LevelChunk_Shay_005
 		extends LevelChunk
 	{
 		public override function getLevelObjects():Array

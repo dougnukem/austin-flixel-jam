@@ -17,13 +17,14 @@ package com.TerminalVelocity
 		override public function update():void
 		{
 			super.update();
-			
+			trace("Checkpoint 1800: " + dying + " ... " + flickering() );
 			if (dying && !flickering())
 				die();
 		}
 		
 		public function die():void
 		{
+			FlxG.log("Checkpoint 1900: " + this );
 			visible = false;
 			exists = false;
 		}
