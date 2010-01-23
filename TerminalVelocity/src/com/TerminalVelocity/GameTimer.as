@@ -7,15 +7,17 @@ package com.TerminalVelocity
 	{
 		private var _timeElapsed:Number;
 		
-		
 		public function GameTimer() 
 		{
 			var tempText:String;
 			
 			_timeElapsed = FlxG.elapsed * 10
 			tempText = _timeElapsed.toFixed(0);
-			
+	
 			super(0,0,100,"Score: " + tempText);
+			this.scrollFactor.x = 0;
+			this.scrollFactor.y = 0;
+			
 		}
 		
 		override public function update():void
