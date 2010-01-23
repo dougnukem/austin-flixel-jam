@@ -67,6 +67,7 @@
 		{
 			
 		}
+		
 		override public function update():void
 		{
 			super.update();
@@ -75,6 +76,7 @@
 			{
 				FlxG.collideArrayY(obstacles, player);
 			}
+			
 		}
 	}
 
