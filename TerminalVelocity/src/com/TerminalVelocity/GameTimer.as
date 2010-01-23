@@ -5,7 +5,7 @@ package com.TerminalVelocity
 	
 	public class GameTimer extends FlxText
 	{
-		private var _timeElapsed:Number;
+		public static var _timeElapsed:Number;
 		
 		public function GameTimer() 
 		{
@@ -32,6 +32,10 @@ package com.TerminalVelocity
 			
 		}
 		
+		public function getScore():String
+		{
+			return _timeElapsed.toFixed(0)
+		}
 
 	}
 }
