@@ -31,13 +31,20 @@
 		private function initObstacles():void
 		{
 			obstacles = new Array();
-			obstacles.push(new Obstacle(150, 100));
+			obstacles.push(new Obstacle(150, 300));
 			
 			//Add obstacles to game loop.
 			for each(var ob:Obstacle in obstacles)
 			{
 				add(ob);
 			}
+		}
+		
+		override public function update():void
+		{
+			super.update();
+			
+			FlxG.collideArrayY(obstacles, player);
 		}
 	}
 
