@@ -1,7 +1,7 @@
 ﻿package  
 {
 	import org.flixel.*
-	import com.TerminalVelocity.MenuState;
+	import com.TerminalVelocity.*;
 	
 	[SWF(width = "480", height = "640", backgroundColor = "#000000")]
 	
@@ -10,8 +10,9 @@
 		
 		public function TerminalVelocity():void
 		{
-			super(240, 320, MenuState, 2);
-			super.setLogoFX(0xFFFF0000);
+			super(480, 640, FallState, 1);
+			super.showLogo = false;
+			//super.setLogoFX(0xFFFF0000);
 		}
 		
 	}
