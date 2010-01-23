@@ -13,7 +13,7 @@
 		[Embed(source = "../../data/obstacle.png")] private var Sprite:Class;
 		[Embed(source = "../../data/1.png")] private var GibSprite:Class;
 		private var gibs:FlxEmitter;
-
+		
 		public function Obstacle(x:int, y:int,otherParams:Object=null) 
 		{
 			super(x, y,otherParams);
@@ -55,7 +55,7 @@
 			super.hurt(Damage);
 			
 			flicker();
-			
+			dying = true;
 			//gibs.x = this.x + this.width/2;
 			//gibs.y = this.y + this.height / 2;
 			//gibs.restart();
