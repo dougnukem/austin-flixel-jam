@@ -9,9 +9,9 @@ package com.TerminalVelocity.levelChunks
 		{
 			var ret:Array = 
 				[
-					{ objClass: Obstacle, x: 200, y: 20, otherParams: {} },
-					{ objClass: Obstacle, x: 180, y: 30, otherParams: {} },
-					{ objClass: Obstacle, x: 160, y: 40, otherParams: {} }
+					{ objClass: SlowObstacle, x: 200, y: 20, otherParams: {} },
+					{ objClass: BounceObstacle, x: 180, y: 30, otherParams: {} },
+					{ objClass: SlowObstacle, x: 160, y: 40, otherParams: {} }
 				];
 				
 			return ret;
