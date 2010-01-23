@@ -33,7 +33,7 @@
 		
 		private function initPlayer():void
 		{
-			player = new Player(200, 300);
+			player = new Player(FlxG.width/4, 32);
 			FlxG.follow(player);
 			add(player);
 		}
@@ -71,6 +71,7 @@
 		private function initBackground():void
 		{
 			backgroundSprite = new FlxSprite(0, 0, ImgClouds);
+			//backgroundSprite.scale.x = 2.0;
 			add(backgroundSprite);
 		}
 		

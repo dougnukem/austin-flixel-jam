@@ -17,7 +17,7 @@
 		public function Player(x:int, y:int) 
 		{
 			super(x, y);
-			loadGraphic(PlayerSprite, true);
+			loadGraphic(PlayerSprite, true, false, 18, 32);
 			
 			//Set initial gravity
 			this.acceleration.y = 60;
