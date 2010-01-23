@@ -10,14 +10,13 @@
 	 */
 	public class Obstacle extends GameObject
 	{
-		[Embed(source = "../../data/obstacle.png")] private var Sprite:Class;
 		[Embed(source = "../../data/1.png")] private var GibSprite:Class;
 		private var gibs:FlxEmitter;
 		
 		public function Obstacle(x:int, y:int,otherParams:Object=null) 
 		{
 			super(x, y,otherParams);
-			loadGraphic(Sprite);
+			//loadGraphic(Sprite);
 			fixed = true;
 			//TODO: can't figure out how to do this emitter without a runtime error.
 			//gibs = new FlxEmitter(this.x, this.y, 0);

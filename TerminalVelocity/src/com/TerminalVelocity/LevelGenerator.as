@@ -6,6 +6,7 @@ package  com.TerminalVelocity
 	
 	public class LevelGenerator
 	{
+		public static const LEVEL_TOP_Y_OFFSET:int = 100;
 		
 		public static var globalGenerator:LevelGenerator;
 		
@@ -29,7 +30,7 @@ package  com.TerminalVelocity
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
 			//	do it by modifying this array!!! Simply put the name of your class (e.g. LevelChunk_Shay_001)
 			//	in the array and it will be used!
-			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002 ];
+			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004 ];
 			
 			
 			
@@ -41,26 +42,7 @@ package  com.TerminalVelocity
 		
 		protected function preGenerateLevel():void
 		{
-			// TODO: Fill in levelObjects with generated objects and their x,y values. Sorted by y value, highest first.
-			
-			// TODO: Open all of the available chunks, and pull objects out of them into the levelObjects array, using offsets correctly.
-			
-			// HACK: Just get each of the available chunks in order and stick their objects into the objects array.
 			var runningHeight:Number = 0;
-			
-			
-			/*
-			for ( var i:uint = 0; i < availableLevelChunks.length; i++ )
-			{
-				var chunkClass:Class = availableLevelChunks[i];
-				var chunk:LevelChunk = new chunkClass();
-				
-				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
-				
-				runningHeight += chunk.getHeight();
-			}
-			
-			*/
 			
 			// We'll use this associative array to track how many times we've used each level chunk.
 			var numChunksAdded:int = 0;
@@ -76,7 +58,7 @@ package  com.TerminalVelocity
 				// Append a chunk...!
 				var chunkClass:Class = availableLevelChunks[numChunksAdded];
 				var chunk:LevelChunk = new chunkClass();
-				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
+				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight + LEVEL_TOP_Y_OFFSET );
 				
 				// Iterate things!
 				numChunksAdded = ( ( numChunksAdded + 1 ) % availableLevelChunks.length );
