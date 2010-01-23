@@ -23,7 +23,7 @@
 		{
 			super.hurt(Damage);
 			
-			die();
+			//die();
 		}
 	}
 
