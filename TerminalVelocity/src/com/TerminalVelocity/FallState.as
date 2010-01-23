@@ -9,6 +9,7 @@
 	public class FallState extends FlxState
 	{
 		private var player:Player;
+		private var timer:GameTimer;
 		//We'll have collection arrays of enemies, platforms, branches, etc for memory efficiency.
 		//The spawner will pull from these collections.
 		private var obstacles:Array = new Array();
@@ -20,6 +21,7 @@
 			initPlayer();
 			initObstacles();
 			initBackground();
+			initGameTimer();
 			//Camera follow the player
 			//FlxG.follow(player);
 			//FlxG.followAdjust(0,0.5);
@@ -46,6 +48,12 @@
 				add(ob);
 			}
 			
+		}
+		
+		private function initGameTimer():void
+		{
+			timer = new GameTimer();
+			add(timer);
 		}
 		
 		private function initBackground():void
