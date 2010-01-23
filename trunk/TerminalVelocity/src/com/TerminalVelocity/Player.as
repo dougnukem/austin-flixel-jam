@@ -18,30 +18,32 @@
 		{
 			super(x, y);
 			loadGraphic(PlayerSprite, true);
+			
+			//Set initial gravity
+			this.acceleration.y = 60;
 			_left = false;
 		}
 		
 		override public function update():void
 		{
-			super.update();
-			
 			handleInput();
+			super.update();
 		}
 		
 		private function handleInput():void
 		{
 			if (FlxG.keys.LEFT)
 			{
-				this.velocity = new Point( -10, 0);
+				this.velocity.x = -200;
 				_left = true;
 			}
 			else if (FlxG.keys.RIGHT)
 			{
-				this.velocity = new Point(10, 0);
+				this.velocity.x = 200;
 			}
 			else
 			{
-				this.velocity = new Point(0, 0);
+				this.velocity.x = 0;
 			}
 		}
 	}
