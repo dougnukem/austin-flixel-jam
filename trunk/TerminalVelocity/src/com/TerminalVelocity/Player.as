@@ -32,6 +32,8 @@
 		
 		private function handleInput():void
 		{
+			
+			
 			if (FlxG.keys.LEFT)
 			{
 				this.velocity.x = -200;
