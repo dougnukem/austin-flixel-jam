@@ -14,7 +14,7 @@
 		//The spawner will pull from these collections.
 		private var obstacles:Array = new Array();
 		
-		[Embed(source="../../data/backgroundimgs/Clouds.PNG")] private var ImgClouds:Class;
+		[Embed(source="../../data/backgroundimgs/TestBackground.png")] private var ImgClouds:Class;
 		private var backgroundSprite:FlxSprite;
 		
 		public static const LEVEL_HEIGHT:int = 5000;
@@ -33,7 +33,7 @@
 		
 		private function initPlayer():void
 		{
-			player = new Player(150, 20);
+			player = new Player(200, 300);
 			FlxG.follow(player);
 			add(player);
 		}
@@ -70,7 +70,7 @@
 		
 		private function initBackground():void
 		{
-			backgroundSprite = new FlxSprite(-500, -500, ImgClouds);
+			backgroundSprite = new FlxSprite(0, 0, ImgClouds);
 			add(backgroundSprite);
 		}
 		
