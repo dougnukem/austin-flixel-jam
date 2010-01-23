@@ -6,9 +6,7 @@ package  com.TerminalVelocity
 	
 	public class LevelGenerator
 	{
-		public static const LEVEL_TOP_Y_OFFSET:int = 100;
-		
-		public static var globalGenerator:LevelGenerator;
+		public static const LEVEL_TOP_Y_OFFSET:int = 650;
 		
 		protected var levelObjects:Array;
 		protected var availableLevelChunks:Array;
@@ -16,14 +14,6 @@ package  com.TerminalVelocity
 		
 		public function LevelGenerator(_height:int)
 		{
-			if ( globalGenerator != null )
-			{
-				trace("There can be only one LevelGenerator!!!");
-				throw Error;
-			}
-			
-			globalGenerator = this;
-			
 			levelHeight = _height;
 			
 			
