@@ -15,10 +15,18 @@
 		{	
 			FlxG.showCursor(cursorImg);
 			
-			var txt:FlxText
-			txt = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "You Die!")
+			var txt:FlxText;
+			var scoreText:FlxText;
+			
+			txt = new FlxText(0, (FlxG.height / 2) - 80, FlxG.width, "You Die!")
 			txt.setFormat(null, 16, 0xFFFFFFFF, "center")
+			
+			scoreText = new FlxText(0, (FlxG.height / 2)-40, FlxG.width, "Your Score: " + GameTimer._timeElapsed.toFixed(0));
+			scoreText.setFormat(null, 16, 0xFFFFFFFF, "center");
+			
+			
 			this.add(txt);
+			this.add(scoreText);
 			
 			//Try again button.
 			playButton = new FlxButton(75, 200, onTryAgain);
