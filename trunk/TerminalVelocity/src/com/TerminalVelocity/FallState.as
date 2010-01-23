@@ -13,6 +13,8 @@
 		//The spawner will pull from these collections.
 		private var obstacles:Array;
 		
+		public static const LEVEL_HEIGHT:int = 10000;
+		
 		public function FallState() 
 		{
 			initPlayer();
@@ -30,14 +32,18 @@
 		
 		private function initObstacles():void
 		{
-			obstacles = new Array();
-			obstacles.push(new Obstacle(150, 300));
+			// Generate all theh objects for the level
+			var lg:LevelGenerator = new LevelGenerator( LEVEL_HEIGHT );
+			var levelObjects:Array = lg.getLevelObjectsForRange(0, 100);
 			
-			//Add obstacles to game loop.
-			for each(var ob:Obstacle in obstacles)
+			
+			for ( var i:uint = 0; i < levelObjects.length; i++)
 			{
+				var ob:GameObject = levelObjects[i];
+				
 				add(ob);
 			}
+			
 		}
 		
 		override public function update():void

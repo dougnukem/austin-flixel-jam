@@ -7,13 +7,13 @@
 	 * ...
 	 * @author ...
 	 */
-	public class Obstacle extends FlxSprite
+	public class Obstacle extends GameObject
 	{
 		[Embed(source = "../../data/obstacle.png")] private var Sprite:Class;
 		
-		public function Obstacle(x:int, y:int) 
+		public function Obstacle(x:int, y:int,otherParams:Object=null) 
 		{
-			super(x, y);
+			super(x, y,otherParams);
 			loadGraphic(Sprite);
 		}
 		

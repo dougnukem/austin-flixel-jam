@@ -11,7 +11,7 @@ package  com.TerminalVelocity
 		protected var levelObjects:Array;
 		protected var availableLevelChunks:Array;
 		
-		public function LevelGenerator(_height:Number)
+		public function LevelGenerator(_height:int)
 		{
 			if ( globalGenerator != null )
 			{
