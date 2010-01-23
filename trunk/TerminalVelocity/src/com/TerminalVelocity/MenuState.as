@@ -4,7 +4,7 @@
 	
 	public class MenuState extends FlxState
 	{
-		[Embed(source = "../../data/cursor.png")] private var cursorImg:Class;
+		[Embed(source = "../../org/flixel/data/cursor.png")] private var cursorImg:Class;
 		
 		private var playButton:FlxButton
 		override public function MenuState():void
