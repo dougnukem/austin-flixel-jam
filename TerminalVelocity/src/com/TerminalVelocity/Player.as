@@ -33,11 +33,11 @@
 		
 		private function handleInput():void
 		{
-			if (FlxG.keys.LEFT)
+			if (FlxG.keys.LEFT && this.x > 0)
 			{
 				this.velocity.x = -200;
 			}
-			else if (FlxG.keys.RIGHT)
+			else if (FlxG.keys.RIGHT && this.x < (FlxG.width-18))
 			{
 				this.velocity.x = 200;
 			}
@@ -66,14 +66,14 @@
 		{
 			velocity.y = -100;
 			//FlxG.play(SndJump);
-			flicker();
+			//flicker();
 		}
 		
 		override public function hurt(Damage:Number):void
 		{
-			super.hurt(Damage);
+			//super.hurt(Damage);
 			
-			flicker();
+			//flicker();
 		}
 		
 		

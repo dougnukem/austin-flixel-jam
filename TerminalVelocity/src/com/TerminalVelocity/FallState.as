@@ -34,7 +34,9 @@
 		private function initPlayer():void
 		{
 			player = new Player(FlxG.width/4, 32);
-			FlxG.follow(player);
+			FlxG.follow(player, 5);
+			FlxG.followBounds(0,0,FlxG.width,LEVEL_HEIGHT);
+			//FlxG.followMax.x = 320; 
 			add(player);
 		}
 		
