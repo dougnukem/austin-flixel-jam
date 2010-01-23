@@ -26,7 +26,8 @@ package  com.TerminalVelocity
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
 			//	do it by modifying this array!!! Simply put the name of your class (e.g. LevelChunk_Shay_001)
 			//	in the array and it will be used!
-			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002 ];
+			//availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002 ];
+			availableLevelChunks = [ LevelChunk_Shay_001 ];
 			
 			
 			
@@ -52,23 +53,17 @@ package  com.TerminalVelocity
 				
 				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
 				
-				for ( var j:uint = 0; j < levelObjects.length; j++ )
-				{
-					var ob:GameObject = levelObjects[j];
-				}
-				
 				runningHeight += chunk.getHeight();
 			}
+			
+			// Always append the ground at the bottom!
+			appendChunkObjectsToArrayAtOffset( levelObjects, new LevelChunk_FLOOR(), runningHeight );
 			
 		}
 		
 		public function getLevelObjectsForRange(_topY:Number,_bottomY:Number):Array
 		{
 			// TODO: Filter out the objects that aren't in the range asked for!
-			for ( var i:uint = 0; i < levelObjects.length; i++ )
-			{
-				var ob:GameObject = levelObjects[i];
-			}
 			
 			return levelObjects;
 		}
