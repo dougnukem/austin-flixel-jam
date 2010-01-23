@@ -17,6 +17,8 @@
 		[Embed(source="../../data/backgroundimgs/TestBackground.png")] private var ImgClouds:Class;
 		private var backgroundSprite:FlxSprite;
 		
+		[Embed(source="../../data/Audio/TerminalVelocity-FallingTheme.mp3")] private var SndMusic:Class;
+		
 		public static const LEVEL_HEIGHT:int = 5000;
 		
 		public function FallState() 
@@ -24,6 +26,7 @@
 			initBackground();
 			initPlayer();
 			initObstacles();
+			initMusic();
 			
 			initGameTimer();
 			//Camera follow the player
@@ -75,6 +78,11 @@
 			backgroundSprite = new FlxSprite(0, 0, ImgClouds);
 			//backgroundSprite.scale.x = 2.0;
 			add(backgroundSprite);
+		}
+		
+		private function initMusic():void 
+		{
+			FlxG.playMusic(SndMusic);	
 		}
 		
 		override public function update():void

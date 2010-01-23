@@ -1,8 +1,6 @@
 ﻿package com.TerminalVelocity 
 {
-	import flash.geom.Point;
 	import org.flixel.*;
-	import org.flixel.FlxG;
 	
 	/**
 	 * ...
@@ -11,6 +9,9 @@
 	public class Player extends FlxSprite
 	{
 		[Embed(source = "../../data/player.png")] private var PlayerSprite:Class;
+		[Embed(source = "../../data/Audio/Effects/deathbounce.mp3")] private var DeathSound:Class;
+		
+		private var isAlive:Boolean = true;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -33,18 +34,22 @@
 		
 		private function handleInput():void
 		{
-			if (FlxG.keys.LEFT && this.x > 0)
-			{
-				this.facing = FlxSprite.LEFT;
-				this.velocity.x = -200;
-			}
-			else if (FlxG.keys.RIGHT && this.x < (FlxG.width-18))
-			{
-				this.facing = FlxSprite.RIGHT;
-				this.velocity.x = 200;
-			}
-			else
-			{
+			if (isAlive) {
+				if (FlxG.keys.LEFT && this.x > 0)
+				{
+					this.facing = FlxSprite.LEFT;
+					this.velocity.x = -200;
+				}
+				else if (FlxG.keys.RIGHT && this.x < (FlxG.width-18))
+				{
+					this.facing = FlxSprite.RIGHT;
+					this.velocity.x = 200;
+				}
+				else
+				{
+					this.velocity.x = 0;
+				}
+			} else {
 				this.velocity.x = 0;
 			}
 		}
@@ -61,7 +66,15 @@
 
 		public function die():void
 		{
-			FlxG.switchState(DeathState);
+			FlxG.music.stop();
+			this.isAlive = false;
+			var deathSnd:FlxSound = FlxG.play(DeathSound);
+			FlxG.fade(0xff131c1b,2,
+				function onDeathFade():void 
+				{
+					FlxG.switchState(DeathState);
+				});
+			
 		}
 		
 		public function bounce():void
