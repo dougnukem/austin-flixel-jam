@@ -15,17 +15,6 @@
 			super.showLogo = false;
 			//super.setLogoFX(0xFFFF0000);
 			
-			lg = new LevelGenerator(10000);
-			
-			var levelObjects:Array = lg.getLevelObjectsForRange(0, 100);
-			
-			/*
-			for ( var i:uint = 0; i < levelObjects.length; i++)
-			{
-				trace("Checkpoint 900: " + levelObjects[i] + " ... " + levelObjects[i].x +"," + levelObjects[i].y );
-				
-			}
-			*/
 			
 		}
 		
