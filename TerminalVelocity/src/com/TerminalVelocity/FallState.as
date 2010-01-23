@@ -80,7 +80,7 @@
 			
 			if ( obstacles && player )
 			{
-				FlxG.collideArrayY(obstacles, player);
+				FlxG.collideArray(obstacles, player);
 			}
 			
 		}

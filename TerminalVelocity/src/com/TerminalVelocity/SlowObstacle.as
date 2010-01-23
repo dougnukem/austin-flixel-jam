@@ -13,9 +13,9 @@
 			super(_x, _y, _otherParams);
 		}
 		
-		
 		override protected function affectPlayer(player:Player):void
 		{
+			this.die();
 			player.velocity.y /= 2;
 		}
 	}
