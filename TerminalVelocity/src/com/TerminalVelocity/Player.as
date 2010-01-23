@@ -15,7 +15,7 @@
 		public function Player(x:int, y:int) 
 		{
 			super(x, y);
-			loadGraphic(PlayerSprite, true, false, 18, 32);
+			loadGraphic(PlayerSprite, true, true, 18, 32);
 			
 			//Set initial gravity
 			this.acceleration.y = 60;
@@ -35,10 +35,12 @@
 		{
 			if (FlxG.keys.LEFT && this.x > 0)
 			{
+				this.facing = FlxSprite.LEFT;
 				this.velocity.x = -200;
 			}
 			else if (FlxG.keys.RIGHT && this.x < (FlxG.width-18))
 			{
+				this.facing = FlxSprite.RIGHT;
 				this.velocity.x = 200;
 			}
 			else
