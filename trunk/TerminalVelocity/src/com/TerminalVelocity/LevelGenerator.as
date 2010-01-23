@@ -1,6 +1,7 @@
 package  com.TerminalVelocity
 {
-	
+	import org.flixel.FlxG;
+
 	import com.TerminalVelocity.levelChunks.*;
 	
 	public class LevelGenerator
@@ -51,6 +52,11 @@ package  com.TerminalVelocity
 				
 				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
 				
+				for ( var j:uint = 0; j < levelObjects.length; j++ )
+				{
+					var ob:GameObject = levelObjects[j];
+				}
+				
 				runningHeight += chunk.getHeight();
 			}
 			
@@ -59,6 +65,10 @@ package  com.TerminalVelocity
 		public function getLevelObjectsForRange(_topY:Number,_bottomY:Number):Array
 		{
 			// TODO: Filter out the objects that aren't in the range asked for!
+			for ( var i:uint = 0; i < levelObjects.length; i++ )
+			{
+				var ob:GameObject = levelObjects[i];
+			}
 			
 			return levelObjects;
 		}
@@ -80,9 +90,6 @@ package  com.TerminalVelocity
 			}
 			
 		}
-		
-		
-		
 		
 	}
 	

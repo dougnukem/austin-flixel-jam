@@ -37,13 +37,20 @@
 		{
 			// Generate all theh objects for the level
 			var lg:LevelGenerator = new LevelGenerator( LEVEL_HEIGHT );
-			var levelObjects:Array = lg.getLevelObjectsForRange(0, 100);
 			
+			// TODO: This should allow us to 
+			var levelObjects:Array = lg.getLevelObjectsForRange(0, LEVEL_HEIGHT);
+			
+			obstacles = new Array();
 			
 			for ( var i:uint = 0; i < levelObjects.length; i++)
 			{
 				var ob:GameObject = levelObjects[i];
-				obstacles.push( ob );
+				
+				if ( ob )
+				{
+					obstacles.push( ob );
+				}
 				
 				add(ob);
 			}
@@ -64,7 +71,10 @@
 		{
 			super.update();
 			
-			FlxG.collideArrayY(obstacles, player);
+			if ( obstacles && player )
+			{
+				FlxG.collideArrayY(obstacles, player);
+			}
 		}
 	}
 
