@@ -18,7 +18,7 @@
 		{
 			super(x, y,otherParams);
 			loadGraphic(Sprite);
-			
+			fixed = true;
 			//TODO: can't figure out how to do this emitter without a runtime error.
 			//gibs = new FlxEmitter(this.x, this.y, 0);
 			//gibs.setXVelocity(-150,150);
@@ -56,6 +56,7 @@
 			
 			flicker();
 			dying = true;
+			dead = true;
 			//gibs.x = this.x + this.width/2;
 			//gibs.y = this.y + this.height / 2;
 			//gibs.restart();

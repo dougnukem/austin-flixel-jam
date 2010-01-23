@@ -12,8 +12,6 @@
 	{
 		[Embed(source = "../../data/player.png")] private var PlayerSprite:Class;
 		
-		private var _left:Boolean; //Denotes whether player sprite should be reversed or not.
-		
 		public function Player(x:int, y:int) 
 		{
 			super(x, y);
@@ -21,7 +19,6 @@
 			
 			//Set initial gravity
 			this.acceleration.y = 60;
-			_left = false;
 		}
 		
 		override public function update():void
@@ -39,7 +36,6 @@
 			if (FlxG.keys.LEFT)
 			{
 				this.velocity.x = -200;
-				_left = true;
 			}
 			else if (FlxG.keys.RIGHT)
 			{
