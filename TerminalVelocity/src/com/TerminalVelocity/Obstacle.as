@@ -40,10 +40,14 @@
 				hurt(0);
 				
 				var player:Player = core as Player;
-				player.bounce();
+				affectPlayer(player);
 			}
 			
 			return isHit;
+		}
+		
+		protected function affectPlayer(player:Player):void {
+			player.hurt(0);
 		}
 		
 		override public function hurt(Damage:Number):void
