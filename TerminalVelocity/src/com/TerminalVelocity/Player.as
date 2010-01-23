@@ -47,6 +47,11 @@
 			}
 		}
 		
+		public function die():void
+		{
+			FlxG.log("TODO: DIE HORRIBLY!");
+		}
+		
 		override public function collideY(core:FlxCore):Boolean
 		{
 			var isHit:Boolean = super.collideY(core);
