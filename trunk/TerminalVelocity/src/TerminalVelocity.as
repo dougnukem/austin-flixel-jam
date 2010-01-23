@@ -11,7 +11,7 @@
 		
 		public function TerminalVelocity():void
 		{
-			super(280,320, FallState, 2);
+			super(280,320, MenuState, 2);
 			super.showLogo = false;
 			
 		}
