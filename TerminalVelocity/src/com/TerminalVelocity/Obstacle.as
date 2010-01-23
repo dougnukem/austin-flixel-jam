@@ -54,6 +54,9 @@
 			super.hurt(Damage);
 			
 			flicker();
+			
+			FlxG.log("Checkpoint 900: " + this );
+			
 			dying = true;
 			dead = true;
 			//gibs.x = this.x + this.width/2;
