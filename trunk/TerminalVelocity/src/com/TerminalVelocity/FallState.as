@@ -40,6 +40,7 @@
 			for ( var i:uint = 0; i < levelObjects.length; i++)
 			{
 				var ob:GameObject = levelObjects[i];
+				obstacles.push( ob );
 				
 				add(ob);
 			}
