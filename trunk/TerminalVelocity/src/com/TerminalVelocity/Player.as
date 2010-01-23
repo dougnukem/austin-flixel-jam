@@ -47,19 +47,20 @@
 			}
 		}
 		
+
+		//override public function collideY(core:FlxCore):Boolean
+		//{
+			//var isHit:Boolean = super.collideY(core);
+			//FlxG.log("player collide: " );
+			//if(isHit)
+				//bounce();	
+			//
+			//return isHit;
+		//}
+
 		public function die():void
 		{
 			FlxG.log("TODO: DIE HORRIBLY!");
-		}
-		
-		override public function collideY(core:FlxCore):Boolean
-		{
-			var isHit:Boolean = super.collideY(core);
-			FlxG.log("player collide: " );
-			if(isHit)
-				bounce();	
-			
-			return isHit;
 		}
 		
 		public function bounce():void
