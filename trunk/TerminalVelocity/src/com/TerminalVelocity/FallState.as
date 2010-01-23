@@ -11,7 +11,7 @@
 		private var player:Player;
 		//We'll have collection arrays of enemies, platforms, branches, etc for memory efficiency.
 		//The spawner will pull from these collections.
-		private var obstacles:Array;
+		private var obstacles:Array = new Array();
 		
 		public static const LEVEL_HEIGHT:int = 10000;
 		
@@ -19,6 +19,7 @@
 		{
 			initPlayer();
 			initObstacles();
+			initBackground();
 			//Camera follow the player
 			//FlxG.follow(player);
 			//FlxG.followAdjust(0,0.5);
@@ -47,6 +48,10 @@
 			
 		}
 		
+		private function initBackground():void
+		{
+			
+		}
 		override public function update():void
 		{
 			super.update();
