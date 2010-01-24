@@ -10,6 +10,7 @@
 	{
 		[Embed(source = "../../data/player.png")] private var PlayerSprite:Class;
 		[Embed(source = "../../data/Audio/Effects/deathbounce.mp3")] private var DeathSound:Class;
+		[Embed(source = "../../data/Audio/Effects/scream.mp3")] private var DeathScream:Class;
 		
 		private var isAlive:Boolean = true;
 		
@@ -68,7 +69,8 @@
 		{
 			FlxG.music.stop();
 			this.isAlive = false;
-			var deathSnd:FlxSound = FlxG.play(DeathSound);
+			var deathScream:FlxSound = FlxG.play(DeathScream);
+			//var deathSnd:FlxSound = FlxG.play(DeathSound);
 			FlxG.fade(0xff131c1b,2,
 				function onDeathFade():void 
 				{
