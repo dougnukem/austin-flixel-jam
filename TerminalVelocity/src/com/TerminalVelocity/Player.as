@@ -20,7 +20,10 @@
 			loadGraphic(PlayerSprite, true, true, 18, 32);
 			
 			//Set initial gravity
-			this.acceleration.y = 60;
+			//this.acceleration.y = 60;
+			this.maxVelocity.y = 100;
+			this.velocity.y = 60;
+			this.acceleration.y = 65;
 		}
 		
 		override public function update():void
@@ -92,6 +95,8 @@
 			
 			//flicker();
 		}
+		
+		
 		
 		
 	}

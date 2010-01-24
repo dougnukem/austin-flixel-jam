@@ -9,10 +9,11 @@ package com.TerminalVelocity.levelChunks
 		{
 			var ret:Array = 
 				[
-					{ objClass: SpikesTile, x: 20, y: 50, otherParams: {} },
-					{ objClass: SpikesTile, x: 60, y: 50, otherParams: { } },
-					{ objClass: SpikesTile, x: 100, y: 50, otherParams: {} },
-					{ objClass: SpikesTile, x: 140, y: 50, otherParams: { } }
+					{ objClass: SpikesTile, x: 40, y: 50, otherParams: {} },
+					{ objClass: SpikesTile, x: 80, y: 50, otherParams: { } },
+					{ objClass: SpikesTile, x: 120, y: 50, otherParams: {} },
+					{ objClass: SpikesTile, x: 160, y: 50, otherParams: { } },
+					{ objClass: SpikesTile, x: 200, y: 50, otherParams: { } }
 				];
 				
 			return ret;
