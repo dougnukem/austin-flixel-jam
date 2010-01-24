@@ -17,7 +17,7 @@ package com.TerminalVelocity
 		override public function update():void
 		{
 			super.update();
-			trace("Checkpoint 1800: " + dying + " ... " + flickering() );
+			//trace("Checkpoint 1800: " + dying + " ... " + flickering() );
 			if (dying && !flickering())
 				die();
 		}
