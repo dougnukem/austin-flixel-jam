@@ -8,7 +8,10 @@
 	 */
 	public class SlowObstacle extends Obstacle
 	{
+		import org.flixel.*;
+		
 		[Embed(source = "../../data/2.png")] private var Sprite:Class;
+		[Embed(source = "../../data/Audio/Effects/bouncelight.mp3")] private var BounceSound:Class;
 		
 		public function SlowObstacle(_x:int,_y:int,_otherParams:Object=null)
 		{
@@ -19,6 +22,7 @@
 		
 		override protected function affectPlayer(player:Player):void
 		{
+			FlxG.play(BounceSound);
 			player.velocity.y /= 2;
 		}
 		
