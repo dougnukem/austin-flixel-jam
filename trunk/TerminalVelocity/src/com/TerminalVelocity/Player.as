@@ -11,6 +11,9 @@
 		[Embed(source = "../../data/player.png")] private var PlayerSprite:Class;
 		[Embed(source = "../../data/Audio/Effects/deathbounce.mp3")] private var DeathSound:Class;
 		[Embed(source = "../../data/Audio/Effects/scream.mp3")] private var DeathScream:Class;
+		[Embed(source="../../data/gibs.png")] private var ImgGibs:Class;
+		
+		private var gibs:FlxEmitter;
 		
 		private var isAlive:Boolean = true;
 		
@@ -24,6 +27,14 @@
 			this.maxVelocity.y = 100;
 			this.velocity.y = 60;
 			this.acceleration.y = 65;
+			
+			//Gibs emitted upon death
+			this.gibs = new FlxEmitter(0,0,-1.5);
+			this.gibs.setXVelocity(-150,150);
+			this.gibs.setYVelocity(-200,0);
+			this.gibs.setRotation(-720,-720);
+			this.gibs.createSprites(ImgGibs,20);
+			FlxG.state.add(this.gibs);
 		}
 		
 		override public function update():void
@@ -74,6 +85,10 @@
 			FlxG.music.stop();
 			this.isAlive = false;
 			var deathScream:FlxSound = FlxG.play(DeathScream);
+			//Show some blood when you die
+			this.gibs.x = x + width/2;
+			this.gibs.y = y + height/2;
+			this.gibs.restart();
 			//var deathSnd:FlxSound = FlxG.play(DeathSound);
 			FlxG.fade(0xff131c1b,2,
 				function onDeathFade():void 
