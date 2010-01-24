@@ -55,6 +55,7 @@
 				}
 			} else {
 				this.velocity.x = 0;
+				this.velocity.y = 0;
 			}
 		}
 		
