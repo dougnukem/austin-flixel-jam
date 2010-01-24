@@ -6,7 +6,7 @@ package  com.TerminalVelocity
 	
 	public class LevelGenerator
 	{
-		public static const LEVEL_TOP_Y_OFFSET:int = 650;
+		public static const LEVEL_TOP_Y_OFFSET:int = 350;
 		
 		protected var levelObjects:Array;
 		protected var availableLevelChunks:Array;
@@ -20,7 +20,8 @@ package  com.TerminalVelocity
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
 			//	do it by modifying this array!!! Simply put the name of your class (e.g. LevelChunk_Shay_001)
 			//	in the array and it will be used!
-			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004, LevelChunk_Shay_005, LevelChunk_Shay_006 ];
+			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004, LevelChunk_Shay_005, LevelChunk_Shay_006, LevelChunk_Shay_RANDOM, LevelChunk_Shay_RANDOM ];
+			
 			
 			
 			levelObjects = new Array();
@@ -31,7 +32,7 @@ package  com.TerminalVelocity
 		
 		protected function preGenerateLevel():void
 		{
-			var runningHeight:Number = 0;
+			var runningHeight:Number = LEVEL_TOP_Y_OFFSET;
 			
 			// We'll use this associative array to track how many times we've used each level chunk.
 			var numChunksAdded:int = 0;
@@ -47,7 +48,7 @@ package  com.TerminalVelocity
 				// Append a chunk...!
 				var chunkClass:Class = availableLevelChunks[numChunksAdded];
 				var chunk:LevelChunk = new chunkClass();
-				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight + LEVEL_TOP_Y_OFFSET );
+				appendChunkObjectsToArrayAtOffset( levelObjects, chunk, runningHeight );
 				
 				// Iterate things!
 				numChunksAdded = ( ( numChunksAdded + 1 ) % availableLevelChunks.length );

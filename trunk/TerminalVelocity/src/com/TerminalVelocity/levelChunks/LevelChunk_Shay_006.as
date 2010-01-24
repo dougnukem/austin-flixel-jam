@@ -10,6 +10,7 @@ package com.TerminalVelocity.levelChunks
 			var ret:Array = 
 				[
 					{ objClass: BounceCreature, x: 20, y: 50, otherParams: {} },
+					{ objClass: BounceCreature, x: 80, y: 110, otherParams: {} },
 					{ objClass: BounceCreature, x: 140, y: 170, otherParams: { } }
 				];
 				

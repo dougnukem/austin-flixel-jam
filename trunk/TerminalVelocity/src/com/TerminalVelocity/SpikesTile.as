@@ -7,7 +7,7 @@
 	 * ...
 	 * @author ...
 	 */
-	public class SpikesTile extends GameObject
+	public class SpikesTile extends Obstacle
 	{
 		[Embed(source = "../../data/Spikes.png")] private var Sprite:Class;
 		
@@ -30,6 +30,7 @@
 			}	
 			
 			return isHit;
+			
 		}
 		
 		override public function hurt(Damage:Number):void
