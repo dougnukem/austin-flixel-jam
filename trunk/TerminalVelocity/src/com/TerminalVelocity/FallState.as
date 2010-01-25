@@ -82,7 +82,7 @@
 		
 		private function initMusic():void 
 		{
-			FlxG.playMusic(SndMusic);	
+			FlxG.playMusic(SndMusic);
 		}
 		
 		override public function update():void

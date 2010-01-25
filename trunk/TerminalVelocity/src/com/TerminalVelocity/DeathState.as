@@ -9,6 +9,7 @@
 	public class DeathState extends FlxState
 	{
 		[Embed(source = "../../org/flixel/data/cursor.png")] private var cursorImg:Class;
+		[Embed(source = "../../data/Audio/Effects/motorev.mp3")] private var ButtonSound:Class;		
 		
 		private var playButton:FlxButton
 		public function DeathState() 
@@ -39,6 +40,7 @@
 			add(playButton);
 		}
 		private function onTryAgain():void {
+			FlxG.play(ButtonSound);
 			FlxG.switchState(FallState);
 		}
 	}

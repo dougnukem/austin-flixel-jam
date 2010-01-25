@@ -5,6 +5,7 @@
 	public class MenuState extends FlxState
 	{
 		[Embed(source = "../../org/flixel/data/cursor.png")] private var cursorImg:Class;
+		[Embed(source = "../../data/Audio/Effects/warning1.mp3")] private var ButtonSound:Class;
 		
 		private var playButton:FlxButton
 		override public function MenuState():void
@@ -28,6 +29,7 @@
 		}
 		
 		private function onStartClick():void {
+			FlxG.play(ButtonSound);
 			FlxG.switchState(FallState);
 		}
 	}
