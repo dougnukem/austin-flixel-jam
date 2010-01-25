@@ -27,7 +27,7 @@
 			
 			//Set initial gravity
 			//this.acceleration.y = 60;
-			this.maxVelocity.y = 100;
+			this.maxVelocity.y = 145;
 			this.velocity.y = 60;
 			this.acceleration.y = 65;
 			
