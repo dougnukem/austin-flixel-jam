@@ -10,6 +10,7 @@
 	{
 		private var player:Player;
 		private var timer:GameTimer;
+		private var meter:AltitudeMeter;
 		//We'll have collection arrays of enemies, platforms, branches, etc for memory efficiency.
 		//The spawner will pull from these collections.
 		private var obstacles:Array = new Array();
@@ -27,6 +28,7 @@
 			initPlayer();
 			initObstacles();
 			initMusic();
+			initAltitudeMeter();
 			
 			initGameTimer();
 			//Camera follow the player
@@ -71,6 +73,12 @@
 		{
 			timer = new GameTimer();
 			add(timer);
+		}
+		
+		private function initAltitudeMeter():void
+		{
+			meter = new AltitudeMeter(this, LEVEL_HEIGHT, player);
+			add(meter);
 		}
 		
 		private function initBackground():void
