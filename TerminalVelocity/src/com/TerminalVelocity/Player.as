@@ -9,12 +9,15 @@
 	public class Player extends FlxSprite
 	{
 		[Embed(source = "../../data/player.png")] private var PlayerSprite:Class;
-		[Embed(source = "../../data/Audio/Effects/deathbounce.mp3")] private var DeathSound:Class;
 		[Embed(source = "../../data/Audio/Effects/scream.mp3")] private var DeathScream:Class;
-		[Embed(source="../../data/gibs.png")] private var ImgGibs:Class;
+		[Embed(source = "../../data/Audio/Effects/squish.mp3")] private var BounceSound:Class;
+		[Embed(source = "../../data/gibs.png")] private var ImgGibs:Class;
+		
+		// Animations:
+		private static const FALLING:String = 'falling';
+		private static const DYING:String = 'dying';
 		
 		private var gibs:FlxEmitter;
-		
 		private var isAlive:Boolean = true;
 		
 		public function Player(x:int, y:int) 
@@ -35,6 +38,11 @@
 			this.gibs.setRotation(-720,-720);
 			this.gibs.createSprites(ImgGibs,20);
 			FlxG.state.add(this.gibs);
+			
+			//Setup animations
+			addAnimation(FALLING, [0], 0, false);
+			addAnimation(DYING, [0,1,2,3,4,5,6,7,8], TVG.FRAME_RATE, false);
+			play(FALLING);
 		}
 		
 		override public function update():void
@@ -82,26 +90,25 @@
 
 		public function die():void
 		{
+			play(DYING);
 			FlxG.music.stop();
 			this.isAlive = false;
-			var deathScream:FlxSound = FlxG.play(DeathScream);
 			//Show some blood when you die
 			this.gibs.x = x + width/2;
 			this.gibs.y = y + height/2;
 			this.gibs.restart();
-			//var deathSnd:FlxSound = FlxG.play(DeathSound);
+			var deathScream:FlxSound = FlxG.play(DeathScream);
 			FlxG.fade(0xff131c1b,2,
 				function onDeathFade():void 
 				{
 					FlxG.switchState(DeathState);
 				});
-			
 		}
 		
 		public function bounce():void
 		{
 			velocity.y = -100;
-			//FlxG.play(SndJump);
+			FlxG.play(BounceSound);
 			//flicker();
 		}
 		
@@ -111,10 +118,6 @@
 			
 			//flicker();
 		}
-		
-		
-		
-		
 	}
 
 }
