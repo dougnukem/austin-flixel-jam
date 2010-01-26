@@ -33,6 +33,13 @@
 			
 		}
 		
+		override public function collideX(core:FlxCore):Boolean
+		{
+			
+			return false;
+			
+		}
+		
 		override public function hurt(Damage:Number):void
 		{
 			super.hurt(Damage);
