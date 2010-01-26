@@ -26,9 +26,9 @@ package com.TerminalVelocity
 			
 			_meterSprite.scrollFactor.x = 0;
 			_meterSprite.scrollFactor.y = 0;
-			_meterSprite.scale = new Point(0.5, 0.5);
+			_meterSprite.scale = new Point(0.5, 1);
 			//reposition due to scale
-			_meterSprite.y -= _meterSprite.height/4;
+			//_meterSprite.y -= _meterSprite.height/4;
 			
 			_arrowSprite.scrollFactor.x = 0;
 			_arrowSprite.scrollFactor.y = 0;
