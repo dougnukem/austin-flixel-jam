@@ -107,7 +107,7 @@
 		
 		public function bounce():void
 		{
-			velocity.y = -100;
+			velocity.y = -60;
 			FlxG.play(BounceSound);
 			//flicker();
 		}

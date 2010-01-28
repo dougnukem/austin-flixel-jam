@@ -8,13 +8,14 @@ package  com.TerminalVelocity
 	{
 		public static const LEVEL_TOP_Y_OFFSET:int = 350;
 		
-		protected var levelObjects:Array;
+		//protected var levelObjects:Array;
 		protected var availableLevelChunks:Array;
-		protected var levelHeight:int;
+		//protected var levelHeight:int;
 		
-		public function LevelGenerator(_height:int)
+		//public function LevelGenerator(_height:int)
+		public function LevelGenerator()
 		{
-			levelHeight = _height;
+			//levelHeight = _height;
 			
 			
 			// IF YOU WANT TO ADD/REMOVE LEVEL CHUNKS TO BE USED BY THE GENERATOR,
@@ -23,21 +24,20 @@ package  com.TerminalVelocity
 			availableLevelChunks = [ LevelChunk_Shay_001, LevelChunk_Shay_002, LevelChunk_Shay_003, LevelChunk_Shay_004, LevelChunk_Shay_005, LevelChunk_Shay_006, LevelChunk_Shay_RANDOM, LevelChunk_Shay_RANDOM ];
 			
 			
-			
-			levelObjects = new Array();
-			
-			preGenerateLevel();
-			
 		}
 		
-		protected function preGenerateLevel():void
+		public function getLevelObjectsForRange(_topY:Number,_bottomY:Number):Array
 		{
-			var runningHeight:Number = LEVEL_TOP_Y_OFFSET;
+			// TODO: Filter out the objects that aren't in the range asked for!
+			var levelObjects:Array = new Array();
+			
+			var runningHeight:Number = _topY;
 			
 			// We'll use this associative array to track how many times we've used each level chunk.
 			var numChunksAdded:int = 0;
 			
-			while ( runningHeight < levelHeight )
+			//while ( runningHeight < levelHeight )
+			while ( runningHeight < _bottomY )
 			{
 				// Scramble the array if we're at the start (or have come back around to the start).
 				if ( ( numChunksAdded % availableLevelChunks.length ) == 0 )
@@ -57,16 +57,8 @@ package  com.TerminalVelocity
 			}
 			
 			
-			// Always append the ground at the bottom!
-			appendChunkObjectsToArrayAtOffset( levelObjects, new LevelChunk_FLOOR(), runningHeight );
-			
-		}
-		
-		public function getLevelObjectsForRange(_topY:Number,_bottomY:Number):Array
-		{
-			// TODO: Filter out the objects that aren't in the range asked for!
-			
 			return levelObjects;
+			
 		}
 		
 		protected static function appendChunkObjectsToArrayAtOffset( aryToAppendTo:Array, chunk:LevelChunk, yOffset:Number ):void
