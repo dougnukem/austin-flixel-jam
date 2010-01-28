@@ -20,7 +20,11 @@
 		
 		[Embed(source="../../data/Audio/TerminalVelocity-FallingTheme.mp3")] private var SndMusic:Class;
 		
-		public static const LEVEL_HEIGHT:int = 5000;
+		public static const LEVEL_HEIGHT:int = 50000000;
+		public static const LEVEL_HEIGHT_CHUNK_TO_LOAD:int = 500;
+		
+		protected var lg:LevelGenerator;
+		protected var loadedObstaclesUpToY:Number;		// We've streamed in all obstacles in between 0 and this y coordinate.
 		
 		public function FallState() 
 		{
@@ -40,7 +44,7 @@
 		{
 			player = new Player(FlxG.width/4, 16);
 			FlxG.follow(player, 5);
-			FlxG.followBounds(0,0,FlxG.width,LEVEL_HEIGHT+LevelGenerator.LEVEL_TOP_Y_OFFSET);
+			FlxG.followBounds(0, 0, FlxG.width, LEVEL_HEIGHT + LevelGenerator.LEVEL_TOP_Y_OFFSET);
 			//FlxG.followMax.x = 320; 
 			add(player);
 		}
@@ -48,16 +52,24 @@
 		private function initObstacles():void
 		{
 			// Generate all theh objects for the level
-			var lg:LevelGenerator = new LevelGenerator( LEVEL_HEIGHT );
+			
+			//lg = new LevelGenerator( LEVEL_HEIGHT );
+			lg = new LevelGenerator();
 			
 			// TODO: This should allow us to 
-			var levelObjects:Array = lg.getLevelObjectsForRange(0, LEVEL_HEIGHT);
-			
+			var levelObjects:Array = lg.getLevelObjectsForRange( LevelGenerator.LEVEL_TOP_Y_OFFSET, LevelGenerator.LEVEL_TOP_Y_OFFSET+LEVEL_HEIGHT_CHUNK_TO_LOAD);
+			loadedObstaclesUpToY = LevelGenerator.LEVEL_TOP_Y_OFFSET+LEVEL_HEIGHT_CHUNK_TO_LOAD;
 			obstacles = new Array();
 			
-			for ( var i:uint = 0; i < levelObjects.length; i++)
+			addGameObjects(levelObjects);
+			
+		}
+		
+		private function addGameObjects(_newGameObjects:Array):void
+		{
+			for ( var i:uint = 0; i < _newGameObjects.length; i++)
 			{
-				var ob:GameObject = levelObjects[i];
+				var ob:GameObject = _newGameObjects[i];
 				
 				if ( ob )
 				{
@@ -66,7 +78,6 @@
 				
 				add(ob);
 			}
-			
 		}
 		
 		private function initGameTimer():void
@@ -100,6 +111,14 @@
 			if ( obstacles && player )
 			{
 				FlxG.collideArray(obstacles, player);
+			}
+			
+			// Stream in a new set of obstacles.
+			if ( player.y + LEVEL_HEIGHT_CHUNK_TO_LOAD > loadedObstaclesUpToY )
+			{
+				FlxG.log("Checkpoint 9100: " + player.y + " ... " + loadedObstaclesUpToY );
+				addGameObjects( lg.getLevelObjectsForRange( loadedObstaclesUpToY, loadedObstaclesUpToY + LEVEL_HEIGHT_CHUNK_TO_LOAD ) );
+				loadedObstaclesUpToY += LEVEL_HEIGHT_CHUNK_TO_LOAD;
 			}
 			
 		}
